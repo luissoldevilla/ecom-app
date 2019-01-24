@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ProductConsumer } from '../context'
+import PropTypes from 'prop-types'
 
 
 export default class Product extends Component {
@@ -17,15 +18,15 @@ export default class Product extends Component {
 
             <button
               className="cart-btn"
-              disable={inCart ? true : false}
+              disabled={inCart ? true : false}
               onClick={() => {
-                console.log('added to the cart')
+                console.log('added to the cart');
               }}
             >
             {inCart ? (
-              <p className="text-capitalize mb-0" disable>
+              <p className="text-capitalize mb-0" disabled>
               {" "}
-              in Cart
+              in cart
               </p>
             ):(
               <i className="fas fa-cart-plus" />
@@ -48,6 +49,16 @@ export default class Product extends Component {
     )
   }
 }
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.bool
+  }).isRequired
+};
 
 const ProductWrapper = styled.div`
 .card{
