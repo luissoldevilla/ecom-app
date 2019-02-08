@@ -10,7 +10,7 @@ class ProductProvider  extends Component {
     products:[],
     detailProduct:detailProduct,
     cart:[],
-    modalOpen:true,
+    modalOpen: false,
     modalProduct:detailProduct,
   }
 
@@ -66,7 +66,7 @@ class ProductProvider  extends Component {
     })
   }
   closeModal = () => {
-    this.State(()=>{
+    this.setState(()=>{
       return {modalOpen:false}
     })
   }
